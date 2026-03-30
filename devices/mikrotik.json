@@ -1,0 +1,10 @@
+{
+  "id": "mikrotik",
+  "label": "Mikrotik",
+  "commands": [
+    "/ip arp print where address={ip}",
+    "/interface monitor-traffic ether1"
+  ],
+  "hasPassword": false,
+  "password": null
+}

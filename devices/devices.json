@@ -1,0 +1,10 @@
+[
+  {
+    "id": "mikrotik",
+    "file": "mikrotik.json"
+  },
+  {
+    "id": "cisco_1121",
+    "file": "cisco_1121.json"
+  }
+]

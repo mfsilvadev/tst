@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TS Tool</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="layout">
+
+    <!-- FORM -->
+    <div class="form-panel">
+      <h1>TS Tool ⚡</h1>
+
+      <div class="user-box">
+        <input id="username" placeholder="Usuário" />
+        <button id="login_btn" onclick="loginUser()">Entrar</button>
+
+        <div id="logged_user" class="logged-user hidden"></div>
+      </div>
+
+      <select id="device"></select>
+
+      <input id="client_id" placeholder="🆔 ID do cliente" />
+      <input id="ip_lan" placeholder="🌐 IP de acesso" oninput="sanitizeIP(this)" />
+      <input id="ip_mgmt" placeholder="🔐 IP de gerência" oninput="sanitizeIP(this)" />
+
+      <button onclick="generate()">Gerar</button>
+      <button onclick="exportHistory()">⬇️ Exportar</button>
+    </div>
+
+    <!-- HISTÓRICO -->
+    <div class="history-panel">
+
+      <div class="section-divider"></div>
+
+      <div class="history-header">
+        <h2>📜 Histórico</h2>
+
+        <button class="clear-history" onclick="clearHistory()" title="Limpar histórico">
+          limpar
+        </button>
+      </div>
+
+      <input id="history_search" placeholder="🔍 Buscar..." oninput="renderHistory()" />
+
+      <div id="history"></div>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="result-panel">
+      <div id="output"></div>
+    </div>
+
+  </div>
+
+  <!-- Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- App -->
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/generate.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <span>Feito por Matheus Fernandes ⚡</span>
+
+    <div class="footer-links">
+      <a href="https://github.com/SEU_USUARIO" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/SEU_LINKEDIN" target="_blank">LinkedIn</a>
+      <a href="mailto:SEU_EMAIL">Contato</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
