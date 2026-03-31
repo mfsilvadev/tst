@@ -10,7 +10,6 @@ async function loadDevices() {
     const data = await fetch(`devices/${dev.file}`).then(r => r.json());
 
     devicesMap[dev.id] = data;
-
     const option = document.createElement("option");
     option.value = data.id;
     option.textContent = data.label;
@@ -35,6 +34,7 @@ function highlightCommand(text) {
 }
 
 function generate(fromHistory = false) {
+  showResult();
   const deviceId = document.getElementById("device").value;
   const ipAccess = document.getElementById("ip_lan").value;
   const ipMgmt = document.getElementById("ip_mgmt").value;
@@ -57,6 +57,8 @@ function generate(fromHistory = false) {
       clientId,
       ipAccess,
       ipMgmt,
+      rawOutput: document.getElementById("raw_output")?.value || "",
+      parsedResult: lastParsedResult || null,
       date: new Date().toISOString()
     });
   }

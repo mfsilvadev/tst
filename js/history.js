@@ -68,7 +68,7 @@ function renderHistory() {
     const formatted = formatRelativeDate(item.date);
 
     return `
-      <div class="history-item" onclick="loadHistory(${i})">
+      <div class="history-item" onclick="loadHistory('${item.date}')"">
         <strong>${item.clientId || "Sem ID"}</strong>
         <small>${item.ipAccess}</small>
         <small class="history-date" title="${new Date(item.date).toLocaleString("pt-BR")}">
@@ -79,15 +79,32 @@ function renderHistory() {
   }).join("");
 }
 
-function loadHistory(index) {
-  const item = getHistory()[index];
+function loadHistory(date) {
+  const item = getHistory().find(h => h.date === date);
+  if (!item) return;
 
+  // restaura inputs
   document.getElementById("device").value = item.deviceId;
-  document.getElementById("client_id").value = item.clientId || "";
+  document.getElementById("client_id").value = item.clientId;
   document.getElementById("ip_lan").value = item.ipAccess;
   document.getElementById("ip_mgmt").value = item.ipMgmt;
 
-  generate(true);
+  // restaura TS
+  if (item.rawOutput) {
+    document.getElementById("raw_output").value = item.rawOutput;
+
+    // 👉 garante que está no parser
+    showParser();
+
+    // 👉 força reprocessamento (ESSENCIAL)
+    setTimeout(() => {
+      parseOutput();
+    }, 50);
+  } else {
+    // fallback: volta pra aba de comandos
+    showResult();
+    generate(true);
+  }
 }
 
 function exportHistory() {

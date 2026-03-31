@@ -409,7 +409,7 @@ button:active {
 .footer {
   border-top: 1px solid #1e293b;
   background: #0b1220;
-
+  backdrop-filter: blur(6px);
   padding: 10px 20px;
 }
 
@@ -454,4 +454,126 @@ button:active {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #475569;
+}
+
+.parser-box textarea {
+  width: 100%;
+  height: 120px;
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  color: #e2e8f0;
+  padding: 8px;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.analysis-item {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  transition: 0.2s;
+}
+
+.analysis-item:hover {
+  transform: translateY(-1px);
+  border-color: #3b82f6;
+}
+
+.analysis-item strong {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.analysis-item span {
+  font-family: 'JetBrains Mono', monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.3px;
+}
+
+/* cores */
+.analysis-item.green {
+  border-color: #22c55e;
+}
+
+.analysis-item.red {
+  border-color: #ef4444;
+}
+
+.analysis-item.orange {
+  border-color: #f59e0b;
+}
+
+.analysis-item.gray {
+  opacity: 0.6;
+}
+
+.result-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.result-tabs button {
+  flex: 1;
+  font-size: 0.8rem;
+  background: #1e293b;
+}
+
+.result-tabs button.active {
+  background: #334155;
+}
+
+.report-box textarea {
+  width: 100%;
+  height: 120px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  color: #e2e8f0;
+  padding: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.report-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.report-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.report-collapsed #report_content {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "form"
+      "history"
+      "result";
+  }
 }

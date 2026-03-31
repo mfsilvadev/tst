@@ -9,7 +9,7 @@
     "show interface gi 0/1/0 | include Full",
     "show arp Vlan1",
     "show log | include down",
-    "ping 8.8.8.8 source Vlan1 {ip}"
+    "ping 8.8.8.8 source Vlan1 {ip} repeat 560"
   ],
   "password": {
     "type": "ipPattern",

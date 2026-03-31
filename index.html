@@ -55,24 +55,42 @@
 
     <!-- RESULTADO -->
     <div class="result-panel">
-      <div id="output"></div>
+      <div class="result-tabs">
+        <button id="tab-result" onclick="showResult()">Comandos</button>
+        <button id="tab-parser" onclick="showParser()">Parser</button>
+      </div>
+
+      <div id="result_view">
+        <div id="output"></div>
+      </div>
+
+      <div id="parser_view" class="hidden">
+        <div class="parser-box">
+          <textarea id="raw_output" placeholder="Cole o output..."></textarea>
+          <button onclick="parseOutput()">Analisar</button>
+        </div>
+
+        <div id="analysis"></div>
+        <div class="report-box">
+
+          <div class="report-header" onclick="toggleReport()">
+            <h2>📄 Relatório</h2>
+            <span id="report_toggle_icon">▼</span>
+          </div>
+
+          <div id="report_content">
+            <textarea id="report_template"></textarea>
+
+            <div class="report-actions">
+              <button onclick="generateReport()">Gerar</button>
+              <button onclick="copyReport()">📋</button>
+              <button onclick="resetTemplate()">Resetar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
-
-  <!-- Lucide -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-  <!-- App -->
-  <script src="js/storage.js"></script>
-  <script src="js/utils.js"></script>
-  <script src="js/user.js"></script>
-  <script src="js/history.js"></script>
-  <script src="js/generate.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/events.js"></script>
-  <script src="js/main.js"></script>
-
   <footer class="footer">
   <div class="footer-content">
     <span>Feito por Matheus Fernandes ⚡</span>
@@ -80,9 +98,25 @@
     <div class="footer-links">
       <a href="https://mfsilvadev.github.io/portifolio-web/index.html" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/matheus-fernandes-a4514116a/" target="_blank">LinkedIn</a>
-      <a href="matheusmatheus939@gmail.com">Contato</a>
+      <a href="mailto:matheusmatheus939@gmail.com">Contato</a>
     </div>
   </div>
 </footer>
+
+  <!-- Lucide -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- App -->
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/parser/cisco_1121.js"></script>
+  <script src="js/parser/mikrotik.js"></script>
+  <script src="js/parser/index.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/user.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/generate.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
