@@ -2,9 +2,11 @@
   "id": "mikrotik",
   "label": "Mikrotik",
   "commands": [
-    "/ip arp print where address={ip}",
-    "/interface monitor-traffic ether1"
+    "/system resource print",
+    "/interface print",
+    "/ip arp print",
+    "/log print",
+    "/ping 8.8.8.8 count=100"
   ],
-  "hasPassword": false,
   "password": null
 }

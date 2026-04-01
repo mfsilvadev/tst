@@ -27,7 +27,7 @@ function clearHistory() {
   const user = getCurrentUser();
   if (!user) return;
 
-  if (!confirm("Deseja limpar o histórico?")) return;
+  if (!confirm("Recomendamos exportar! Deseja limpar o histórico?")) return;
 
   const all = getAllHistory();
   all[user] = [];
@@ -128,5 +128,28 @@ function exportHistory() {
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = `history-${user}.json`;
+  a.click();
+}
+
+function exportUsersSummary() {
+  const all = getAllHistory();
+
+  const users = Object.entries(all).map(([user, history]) => ({
+    user,
+    total: history.length
+  }));
+
+  const data = {
+    exportedAt: new Date().toISOString(),
+    users
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json"
+  });
+
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "ts-tool-users-summary.json";
   a.click();
 }

@@ -47,9 +47,25 @@ function generateReport() {
 }
 
 function copyReport() {
+  const warning = `
+Atenção: revise cuidadosamente o conteúdo gerado antes de utilizá-lo em qualquer registro oficial.
+
+Esta ferramenta não se responsabiliza por informações incorretas, dados sensíveis expostos, formatação inadequada ou erros decorrentes de interpretação ou desatenção do usuário.
+
+Utilize com responsabilidade e atenção.
+
+Em caso de dúvidas, consulte o responsável indicado no rodapé da página.
+`;
+
+  const confirmCopy = confirm(warning);
+
+  if (!confirmCopy) return;
+
   const text = document.getElementById("report_template").value;
 
-  navigator.clipboard.writeText(text).catch(() => {
+  navigator.clipboard.writeText(text).then(() => {
+    alert("Relatório copiado com sucesso 📋");
+  }).catch(() => {
     alert("Erro ao copiar 👀");
   });
 }

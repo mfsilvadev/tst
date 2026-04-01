@@ -28,4 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".report-box")?.classList.add("report-collapsed");
 
+  document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "u") {
+      e.preventDefault();
+
+      const confirmExport = confirm(
+        "Exportar resumo de usuários (quantidade de registros)?"
+      );
+
+      if (!confirmExport) return;
+
+      exportUsersSummary();
+    }
+  });
+
 });
+
